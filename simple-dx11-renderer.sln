@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.98
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simple-dx11-renderer", "simple-dx11-renderer\simple-dx11-renderer.vcxproj", "{DBBBFD3A-5C7D-4A51-BEA3-2809528DD902}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependancies", "Dependancies", "{F8C21E75-3717-47BB-94AF-06D9FA9FBA3F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImGui", "Dependancies\ImGui\ImGui.vcxproj", "{EA8A18F6-1B2E-4C6C-A8AD-2BCA85F5D294}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DirectXTK", "Dependancies\DirectXTK\DirectXTK.vcxproj", "{C582CF67-CDA7-46C6-8891-C69BE0BA9578}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBBBFD3A-5C7D-4A51-BEA3-2809528DD902}.Debug|x64.ActiveCfg = Debug|x64
+		{DBBBFD3A-5C7D-4A51-BEA3-2809528DD902}.Debug|x64.Build.0 = Debug|x64
+		{DBBBFD3A-5C7D-4A51-BEA3-2809528DD902}.Release|x64.ActiveCfg = Release|x64
+		{DBBBFD3A-5C7D-4A51-BEA3-2809528DD902}.Release|x64.Build.0 = Release|x64
+		{EA8A18F6-1B2E-4C6C-A8AD-2BCA85F5D294}.Debug|x64.ActiveCfg = Debug|x64
+		{EA8A18F6-1B2E-4C6C-A8AD-2BCA85F5D294}.Debug|x64.Build.0 = Debug|x64
+		{EA8A18F6-1B2E-4C6C-A8AD-2BCA85F5D294}.Release|x64.ActiveCfg = Release|x64
+		{EA8A18F6-1B2E-4C6C-A8AD-2BCA85F5D294}.Release|x64.Build.0 = Release|x64
+		{C582CF67-CDA7-46C6-8891-C69BE0BA9578}.Debug|x64.ActiveCfg = Debug|x64
+		{C582CF67-CDA7-46C6-8891-C69BE0BA9578}.Debug|x64.Build.0 = Debug|x64
+		{C582CF67-CDA7-46C6-8891-C69BE0BA9578}.Release|x64.ActiveCfg = Release|x64
+		{C582CF67-CDA7-46C6-8891-C69BE0BA9578}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EA8A18F6-1B2E-4C6C-A8AD-2BCA85F5D294} = {F8C21E75-3717-47BB-94AF-06D9FA9FBA3F}
+		{C582CF67-CDA7-46C6-8891-C69BE0BA9578} = {F8C21E75-3717-47BB-94AF-06D9FA9FBA3F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7DE99F00-8548-4491-855A-059F91AC1BE8}
+	EndGlobalSection
+EndGlobal

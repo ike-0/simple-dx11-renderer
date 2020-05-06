@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{dbbbfd3a-5c7d-4a51-bea3-2809528dd902}</ProjectGuid>
+    <RootNamespace>Observer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
+      <CallingConvention>StdCall</CallingConvention>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Dependancies\DirectXTK\Inc;$(SolutionDir)Dependancies\ImGui;$(SolutionDir)Dependancies\Assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependancies\Assimp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>assimp-vc142-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d  "$(SolutionDir)bin-copy\*.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
+      <CallingConvention>StdCall</CallingConvention>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Dependancies\DirectXTK\Inc;$(SolutionDir)Dependancies\ImGui;$(SolutionDir)Dependancies\Assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependancies\Assimp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>assimp-vc142-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d  "$(SolutionDir)bin-copy\*.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Base\Common.cpp" />
+    <ClCompile Include="Base\Compiler\HLSLCompiler.cpp" />
+    <ClCompile Include="Base\DX.cpp" />
+    <ClCompile Include="Graphics\Objects\LogicalDevice.cpp" />
+    <ClCompile Include="Graphics\StateObjects\MPSO.cpp" />
+    <ClCompile Include="Graphics\Objects\Renderer.cpp" />
+    <ClCompile Include="Graphics\Objects\RenderTarget.cpp" />
+    <ClCompile Include="Graphics\Objects\Swapchain.cpp" />
+    <ClCompile Include="Loaders\ModelLoader.cpp" />
+    <ClCompile Include="Loaders\TextureLoader.cpp" />
+    <ClCompile Include="simple-dx11-renderer.cpp" />
+    <ClCompile Include="Options\Options.cpp" />
+    <ClCompile Include="Systems\Chunks\ChunkSystem.cpp" />
+    <ClCompile Include="Systems\DataSystem.cpp" />
+    <ClCompile Include="Systems\InputSystem.cpp" />
+    <ClCompile Include="Systems\TimeSystem.cpp" />
+    <ClCompile Include="Windowing\RenderWindow.cpp" />
+    <ClCompile Include="winmain.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Base\Bit.h" />
+    <ClInclude Include="Base\Common.h" />
+    <ClInclude Include="Base\Compiler\HLSLCompiler.h" />
+    <ClInclude Include="Base\DX.h" />
+    <ClInclude Include="Base\Events\Events.h" />
+    <ClInclude Include="Base\Rand.h" />
+    <ClInclude Include="Base\Time.h" />
+    <ClInclude Include="Extern\Json\json.hpp" />
+    <ClInclude Include="Graphics\Buffers\Buffer.h" />
+    <ClInclude Include="Graphics\Buffers\Buffers.h" />
+    <ClInclude Include="Graphics\Objects\LogicalDevice.h" />
+    <ClInclude Include="Graphics\Objects\Mesh.h" />
+    <ClInclude Include="Graphics\Objects\Sampler.h" />
+    <ClInclude Include="Graphics\Objects\Texture.h" />
+    <ClInclude Include="Graphics\Shaders\Shader.h" />
+    <ClInclude Include="Graphics\StateObjects\MPSO.h" />
+    <ClInclude Include="Graphics\StateObjects\PSO.h" />
+    <ClInclude Include="Graphics\Objects\Renderer.h" />
+    <ClInclude Include="Graphics\Objects\RenderTarget.h" />
+    <ClInclude Include="Graphics\Objects\Swapchain.h" />
+    <ClInclude Include="Loaders\ModelLoader.h" />
+    <ClInclude Include="Loaders\TextureLoader.h" />
+    <ClInclude Include="Objects\Animation.h" />
+    <ClInclude Include="Objects\Camera.h" />
+    <ClInclude Include="Objects\Material.h" />
+    <ClInclude Include="Objects\MaterialTextures.h" />
+    <ClInclude Include="Objects\Model.h" />
+    <ClInclude Include="Objects\Primitives.h" />
+    <ClInclude Include="Objects\Scene.h" />
+    <ClInclude Include="Options\Options.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="simple-dx11-renderer.h" />
+    <ClInclude Include="Profiling\Timer.h" />
+    <ClInclude Include="Systems\Blocks\Block.h" />
+    <ClInclude Include="Systems\Blocks\BlockGrid.h" />
+    <ClInclude Include="Systems\Chunks\Chunk.h" />
+    <ClInclude Include="Systems\Chunks\ChunkSystem.h" />
+    <ClInclude Include="Systems\Chunks\TerrainGenerator.h" />
+    <ClInclude Include="Systems\DataSystem.h" />
+    <ClInclude Include="Systems\InputSystem.h" />
+    <ClInclude Include="Systems\TimeSystem.h" />
+    <ClInclude Include="Windowing\RenderWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dependancies\DirectXTK\DirectXTK.vcxproj">
+      <Project>{c582cf67-cda7-46c6-8891-c69be0ba9578}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Dependancies\ImGui\ImGui.vcxproj">
+      <Project>{ea8a18f6-1b2e-4c6c-a8ad-2bca85f5d294}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

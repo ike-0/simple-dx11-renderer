@@ -1,0 +1,12 @@
+[
+	{
+		"Name": "Bucket",
+		"Roughness": 0.255,
+		"Metalness": 1.00
+	},
+	{
+		"Name": "Water",
+		"Roughness": 0.00,
+		"Metalness": 0.00
+	}
+]
