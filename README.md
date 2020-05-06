@@ -7,7 +7,7 @@ Loads and compiles all shaders at runtime for simplicity. Should be NSIGHT frien
  
 # License
 License is MIT even for well model. Textures used are voronoi generated and baked in Blender.
-HDRI is orignaly from HDRI Haven. Then blurred and used for IBL (Not as actual IBL, just approximated so there would be something to sample from :p ).
+HDRI is originally from HDRI Haven. Then blurred and used for IBL (Not as actual IBL, just approximated so there would be something to sample from :p ).
  
 # Sample
 ![image](https://github.com/ike-0/simple-dx11-renderer/blob/master/well6.png)
