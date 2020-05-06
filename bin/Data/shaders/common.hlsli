@@ -23,5 +23,5 @@ float GetDirectionalLightAttenuation() {
     return 5.0f; // Overestimate energy from the sun as it is dominant source
 }
 
-#endif
+#endif // COMMON
 

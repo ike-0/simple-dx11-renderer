@@ -178,33 +178,6 @@ float GetShadow(float4 fragPosLightSpace, float3 N, float3 L)
 		return (1 - shadow);
 	}
 
-
-
-
-	// float pcfDepth1 = ShadowTexture.Sample(ClampSampler, coords + float2(1,1) * texelSize);
-	// float pcfDepth2 = ShadowTexture.Sample(ClampSampler, coords + float2(0,0) * texelSize);
-	// float pcfDepth3 = ShadowTexture.Sample(ClampSampler, coords + float2(-1,-1) * texelSize);
-	// // float pcfDepth4 = ShadowTexture.Sample(ClampSampler, coords + float2(x,y) * texelSize.xx);
-
-	// float shadow1 = currentDepth - bias > pcfDepth ? 1.0 : 0.0;
-	// float shadow2 = currentDepth - bias > pcfDepth ? 1.0 : 0.0;
-	// float shadow3 = currentDepth - bias > pcfDepth ? 1.0 : 0.0;
-	// float shadow5 = currentDepth - bias > pcfDepth ? 1.0 : 0.0;
-
-	// [unroll]
-	// for(int x = 0; x < 5; ++x)
-	// {
-	// 	float xoffs = 0.5f * x - 1.0f;
-	// 	[unroll]
-	// 	for(int y = 0; y < 5; ++y)
-	// 	{
-	// 		float yoffs = 0.5f * y - 1.0f;
-	// 		float pcfDepth = ShadowTexture.Sample(ClampSampler, coords + float2(xoffs, yoffs) * texelSize.xx);
-	// 		shadow += currentDepth - bias > pcfDepth ? 1.0 : 0.0; 
-	// 	}
-	// }
-
-
 }
 
 // Fudge to get GI from all sources
@@ -306,10 +279,8 @@ PsOut main(in In input)
 	}
 
 	
-	// float3 N = normalize(input.vNormal);			// Normal
 	float3 V = normalize(CameraPosition - input.vPixelWorldPos);	// Camera dir
 	float3 P = input.vPixelWorldPos;								// Pixel pos
-	// float3 L = normalize(SunPos - input.vPixelWorldPos);			// Light dir
 	float3 L = normalize(SunPos);			// Light dir
 
 	PBRParameters params = ComputePBRParameters(
@@ -338,6 +309,7 @@ PsOut main(in In input)
 
 
 	float shadow = GetShadow(input.vPixelLightSpacePos, N, L);
+	
 	// Lift shadows
 	output.Shadow = shadow + IBLIntensity * 2.0f;
 	clamp(output.Shadow,0.0f,1.0f);

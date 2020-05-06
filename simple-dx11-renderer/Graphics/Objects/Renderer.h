@@ -4,7 +4,6 @@
 #include "Graphics/Buffers/Buffers.h"
 #include "Graphics/StateObjects/MPSO.h"
 #include "Objects/Scene.h"
-#include "Systems/Blocks/Block.h"
 #include "Objects/Primitives.h"
 
 class Renderer

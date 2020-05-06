@@ -25,13 +25,6 @@ void ModelLoader::LoadFromFile(const std::filesystem::path& path, const std::fil
 		}
 	}
 
-	// Just force gen tangents, because blender fails at doing so...
-	// https://github.com/KhronosGroup/glTF-Blender-IO/issues/172
-
-	//unsigned int postflags = 0;
-	//postflags |= aiProcess_CalcTangentSpace;
-	//scene = importer.ApplyPostProcessing(postflags);
-
 
 	if (scene->mNumAnimations == 0)
 	{

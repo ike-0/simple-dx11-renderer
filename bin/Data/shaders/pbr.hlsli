@@ -1,4 +1,9 @@
+#ifndef PBR
+#define PBR
+
+
 #include "common.hlsli"
+
 
 float3 FresnelReflectance(in float3 f0, in float3 f90, in float VdotH)
 {
@@ -95,3 +100,4 @@ float3 ComputePBRColor(PBRParameters params, float3 V, float3 N, float3 L, float
 
 
 
+#endif // PBR

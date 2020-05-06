@@ -127,7 +127,6 @@
     <ClCompile Include="Loaders\TextureLoader.cpp" />
     <ClCompile Include="simple-dx11-renderer.cpp" />
     <ClCompile Include="Options\Options.cpp" />
-    <ClCompile Include="Systems\Chunks\ChunkSystem.cpp" />
     <ClCompile Include="Systems\DataSystem.cpp" />
     <ClCompile Include="Systems\InputSystem.cpp" />
     <ClCompile Include="Systems\TimeSystem.cpp" />
@@ -161,7 +160,6 @@
     <ClInclude Include="Graphics\Objects\Swapchain.h" />
     <ClInclude Include="Loaders\ModelLoader.h" />
     <ClInclude Include="Loaders\TextureLoader.h" />
-    <ClInclude Include="Objects\Animation.h" />
     <ClInclude Include="Objects\Camera.h" />
     <ClInclude Include="Objects\Material.h" />
     <ClInclude Include="Objects\MaterialTextures.h" />
@@ -172,11 +170,6 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="simple-dx11-renderer.h" />
     <ClInclude Include="Profiling\Timer.h" />
-    <ClInclude Include="Systems\Blocks\Block.h" />
-    <ClInclude Include="Systems\Blocks\BlockGrid.h" />
-    <ClInclude Include="Systems\Chunks\Chunk.h" />
-    <ClInclude Include="Systems\Chunks\ChunkSystem.h" />
-    <ClInclude Include="Systems\Chunks\TerrainGenerator.h" />
     <ClInclude Include="Systems\DataSystem.h" />
     <ClInclude Include="Systems\InputSystem.h" />
     <ClInclude Include="Systems\TimeSystem.h" />

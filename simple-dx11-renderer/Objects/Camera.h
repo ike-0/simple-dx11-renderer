@@ -163,11 +163,7 @@ public:
 	{
 		_position = DirectX::XMVECTOR{x, y, z, 0.0f};
 	}
-	//inline D3D11_VIEWPORT GetViewport() const
-	//{
-	//	D3D11_VIEWPORT viewport{ 0.0f, 0.0f, _window->viewport.Width, _window->viewport.Height, fNear, fFar };
-	//	return viewport;
-	//}
+
 
 	float yaw;
 	float pitch;

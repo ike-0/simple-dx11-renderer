@@ -1,7 +1,6 @@
 #pragma once
 #include "Graphics/Objects/Mesh.h"
 #include "Objects/Material.h"
-#include "Objects/Animation.h"
 #include "Objects/Model.h"
 
 #include "Loaders/TextureLoader.h"

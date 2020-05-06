@@ -18,45 +18,6 @@ public:
 };
 
 
-class Plane : public Primitive
-{
-public:
-	inline Plane() {
-		std::vector<Index>		indices;
-		std::vector<Vertex>		vertices;
-
-		//indices.push_back(1);
-		//indices.push_back(2);
-		//indices.push_back(0);
-		//indices.push_back(1);
-		//indices.push_back(3);
-		//indices.push_back(2);
-
-		//vertices.push_back(Vertex{
-		//	{ -1.0f, 0.0f,-1.0f }, { 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f } });
-		//vertices.push_back(Vertex{
-		//	{ -1.0f, 0.0f, 1.0f }, { 0.0f, 1.0f, 0.0f }, { 1.0f, 0.0f } });
-		//vertices.push_back(Vertex{
-		//	{ 1.0f, 0.0f, -1.0f }, { 0.0f, 1.0f, 0.0f }, { 1.0f, 0.0f } });
-		//vertices.push_back(Vertex{
-		//	{ 1.0f, 0.0f, 1.0f }, { 0.0f, 1.0f, 0.0f }, { 1.0f, 1.0f } });
-
-		//Mesh mesh = Mesh("plane", indices, vertices);
-		//mesh = std::move(mesh);
-	};
-
-	inline ~Plane() {};
-
-	Mesh mesh;
-
-	DirectX::XMVECTOR		position;
-	DirectX::XMVECTOR		rotation;
-	float					scale;
-	float					uvscale;
-
-};
-
-
 class Sphere : public Primitive
 {
 public:

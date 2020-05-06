@@ -3,7 +3,6 @@
 #include "Systems/TimeSystem.h"
 #include "Systems/InputSystem.h"
 #include "Systems/DataSystem.h"
-#include "Systems/Chunks/ChunkSystem.h"
 #include "Graphics/Objects/Renderer.h"
 #include "Objects/Camera.h"
 #include "Objects/Scene.h"
@@ -36,14 +35,12 @@ private:
 private:
 	RenderWindow* _window;
 
-	std::shared_ptr<Model> wellmodel;
-	std::shared_ptr<Model> groundmodel;
-	//std::shared_ptr<Model> sphere2model;
+	std::shared_ptr<Model>			wellmodel;
+	std::shared_ptr<Model>			groundmodel;
 
 	std::unique_ptr<Camera>			_camera;
 	std::unique_ptr<Scene>			_scene;
 
-	//std::unique_ptr<ChunkSystem>	_chunksys;
 	std::unique_ptr<TimeSystem>		_timesys;
 	std::unique_ptr<InputSystem>	_inputsys;
 	std::unique_ptr<DataSystem>		_datasys;
