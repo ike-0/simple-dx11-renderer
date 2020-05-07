@@ -94,12 +94,10 @@ void LogicalDevice::CreateDepthState()
 void LogicalDevice::CreateRasterizerStates()
 {
     {
-		// Create Rasterizer
+		// Create Solid Rasterizer
 		D3D11_RASTERIZER_DESC2 rasterDesc;
 		rasterDesc.FillMode = D3D11_FILL_SOLID;
-		//rasterDesc.FillMode = D3D11_FILL_WIREFRAME;
 		rasterDesc.CullMode = D3D11_CULL_BACK;
-		//rasterDesc.CullMode = D3D11_CULL_NONE;
 		rasterDesc.FrontCounterClockwise = 1;
 		rasterDesc.DepthBias = D3D11_DEFAULT_DEPTH_BIAS;
 		rasterDesc.DepthBiasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP;
@@ -120,9 +118,7 @@ void LogicalDevice::CreateRasterizerStates()
         // Create No Cull Rasterizer
         D3D11_RASTERIZER_DESC2 rasterDesc;
         rasterDesc.FillMode = D3D11_FILL_SOLID;
-        //rasterDesc.FillMode = D3D11_FILL_WIREFRAME;
         rasterDesc.CullMode = D3D11_CULL_NONE;
-        //rasterDesc.CullMode = D3D11_CULL_NONE;
         rasterDesc.FrontCounterClockwise = 1;
         rasterDesc.DepthBias = D3D11_DEFAULT_DEPTH_BIAS;
         rasterDesc.DepthBiasClamp = D3D11_DEFAULT_DEPTH_BIAS_CLAMP;

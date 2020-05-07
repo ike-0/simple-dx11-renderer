@@ -54,7 +54,6 @@ void DX::HandleDeviceRemoved(HRESULT hr)
 		WARN("Device Lost on Present: Reason code - " + std::to_string(hr));
 	}
 #endif
-	//D3D11System::InvokeRecreation();
 
 	// This is the point where we serialize all states or recreate all devices
 	ERROR("Rendering Device Lost");
@@ -70,6 +69,8 @@ void DX::HandleGraphicsOptions()
 		WARN("Conservative Rasterization is not supported");
 		Options::Graphics::ConservativeRasterization = 0;
 	}
+
+	// Not used
 	//if (features.ROVsSupported == FALSE)
 	//{
 	//	WARN("Rasterizer Order Views is not supported");
@@ -268,9 +269,9 @@ std::tuple<Microsoft::WRL::ComPtr<ID3D11Device5>, Microsoft::WRL::ComPtr<ID3D11D
 		featureLevels,
 		featLevelCount,
 		D3D11_SDK_VERSION,
-		deviceInt.GetAddressOf(),  // Returns the Direct3D device created.
-		&featureLevel,         // Returns feature level of device created.
-		intContext.GetAddressOf()  // Returns the device immediate context.
+		deviceInt.GetAddressOf(),	// Returns the Direct3D device created.
+		&featureLevel,				// Returns feature level of device created.
+		intContext.GetAddressOf()	// Returns the device immediate context.
 		);
 	if (FAILED(hr))
 	{

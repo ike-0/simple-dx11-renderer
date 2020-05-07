@@ -73,7 +73,7 @@ struct LightSpaceBuffer
 
 struct GridBuffer
 {
-	DirectX::XMMATRIX	m; // Model-World matrix
+	DirectX::XMMATRIX	m;  // Model-World matrix
 };
 
 struct BlurParameters

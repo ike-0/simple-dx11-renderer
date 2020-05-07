@@ -66,6 +66,7 @@ void MPSO::Prepare(CameraBuffer* cameraBuffer, SceneBuffer* sceneBuffer)
 
 	DirectX::XMMATRIX lightspaceMatrix = DirectX::XMMatrixMultiplyTranspose(lookdir, lightProjection);
 
+	// Copy data to GPU
 	D3D11_MAPPED_SUBRESOURCE mat = _lightspacebuffer.Map(D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0);
 	memcpy(mat.pData, static_cast<const void*>(&lightspaceMatrix), sizeof(LightSpaceBuffer));
 	_lightspacebuffer.Unmap();
@@ -81,25 +82,29 @@ void MPSO::DrawCubemap(CameraBuffer* cameraBuffer)
 	DX::States::Context->VSSetShader(_cubemapvs.Get(), nullptr, NULL);
 	DX::States::Context->PSSetShader(_cubemapps.Get(), nullptr, NULL);
 
+	// Prepare gpu states
 	_device->SetRasterizer(RasterizerType::SolidNoCull);
 	_device->SetDepthStencil(DepthStencilType::LessEqual);
 	_device->SetRenderTarget(_target.get());
 
+	// Create MVP matrix
 	DirectX::XMMATRIX m = DirectX::XMMatrixIdentity();
 	DirectX::XMMATRIX scale = DirectX::XMMatrixScaling(5.0f, 5.0f, 5.0f);
-
-
 	DirectX::XMMATRIX translation = DirectX::XMMatrixTranslation(cameraBuffer->position.x, cameraBuffer->position.y, cameraBuffer->position.z);
 
 	m = DirectX::XMMatrixMultiply(scale, translation);
 
+	// Row -> Column requires Transpose
 	DirectX::XMMATRIX mvp = cameraBuffer->vp * DirectX::XMMatrixTranspose(m);
 
 	DX::States::Context->VSSetConstantBuffers(0, 1, _mvpbuffer.GetAddressOf());
 
+
+	// Copy MVP to GPU
 	D3D11_MAPPED_SUBRESOURCE mat = _mvpbuffer.Map(D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0);
 	memcpy(mat.pData, static_cast<const void*>(&mvp), sizeof(MVPBuffer));
 	_mvpbuffer.Unmap();
+
 
 	DX::States::Context->PSSetSamplers(0, 1, _cubemapSampler.GetAddressOf());
 	DX::States::Context->PSSetShaderResources(0, 1, _skybox->material->textures.diffuse.GetAddressOf());
@@ -113,6 +118,7 @@ void MPSO::DrawCubemap(CameraBuffer* cameraBuffer)
 	DX::States::Context->IASetIndexBuffer(_skybox->bindex.Get(), DXGI_FORMAT_R16_UINT, 0);
 	DX::States::Context->IASetVertexBuffers(0, 1, _skybox->bvertex.GetAddressOf(), &stride, &offset);
 
+	// Draw
 	DX::States::Context->DrawIndexed(_skybox->bindex.Size(), 0, 0);
 }
 
@@ -120,6 +126,7 @@ void MPSO::SetModelConstants(const ModelBuffer* modelbuffer)
 {
 	DX::States::Context->VSSetConstantBuffers(1, 1, _modelbuffer.GetAddressOf());
 
+	// Copy per model constants
 	D3D11_MAPPED_SUBRESOURCE mat = _modelbuffer.Map(D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0);
 	memcpy(mat.pData, static_cast<const void*>(modelbuffer), sizeof(ModelBuffer));
 	_modelbuffer.Unmap();
@@ -308,7 +315,7 @@ void MPSO::InitializeShaders()
 
 	_shadowblurcsX = DataSystem::Instance->ComputeShaders["shadowblur-x"];
 	_shadowblurcsY = DataSystem::Instance->ComputeShaders["shadowblur-y"];
-	_blendcs = DataSystem::Instance->ComputeShaders["blend-gs"];
+	_blendcs = DataSystem::Instance->ComputeShaders["blend-gs"]; // Blend-grayscale
 	_fxaacs = DataSystem::Instance->ComputeShaders["fxaa"];
 
 	if (_shadowblurcsX.Get() == nullptr || _shadowblurcsY.Get() == nullptr || _blendcs.Get() == nullptr || _fxaacs.Get() == nullptr)
@@ -398,6 +405,8 @@ void MPSO::CreateTextures()
 {
 
 	{
+		// Boilerplate
+
 		DXGI_FORMAT format = DXGI_FORMAT::DXGI_FORMAT_R32_TYPELESS;
 		CD3D11_TEXTURE2D_DESC desc(
 			format,

@@ -2,6 +2,7 @@
 
 Renderer::Renderer(RenderWindow* window) : _window(window)
 {
+	// Create our renering device which includes swapchain
 	_device = std::make_unique<LogicalDevice>(window);
 }
 
@@ -13,16 +14,21 @@ Renderer::~Renderer()
 
 void Renderer::Initialize()
 {
+	// State object that performs rendering operations in steps
 	_mpso = std::make_unique<MPSO>(_device.get());
 
+	// Subscribe to event
 	_window->ResizeEvent += [this](UINT w, UINT h) {
 		_mpso->Resize(w, h);
 	};
 
+	// Load cubemap
 	Texture2D tex = TextureLoader::LoadCubemapFromFile(Path::Relative("textures\\cubemap.dds"));
 
+	// Create and set cubemap to that state object
 	_mpso->CreateCubeMap(tex);
 
+	// Set clear color
 	_device->swapchain->SetClearColor( DirectX::XMFLOAT4{ 0.01f, 0.01f, 0.01f, 1.0f });
 	
 	
@@ -41,6 +47,7 @@ void Renderer::StagePrepare()
 
 	_device->ClearBackbuffer();
 
+	// Craete camera and scene buffers
 	DirectX::XMMATRIX proj = _camera->GetProjectionMatrix();
 	DirectX::XMMATRIX view = _camera->GetViewMatrix();
 
@@ -63,6 +70,7 @@ void Renderer::StagePrepare()
 	sbuff.ambientcolor = DirectX::XMFLOAT3{ 0.0f,0.0f,0.0f };
 	sbuff.preciseShadows = _scene->moreShadowSamples;
 
+	// Start the pipeline
 	_mpso->Prepare(&cbuff, &sbuff);
 	_drawmodels.clear();
 	_modelcount = 0;
@@ -71,11 +79,13 @@ void Renderer::StagePrepare()
 
 void Renderer::StageSubmit()
 {
+	// Present to screen
 	_device->Present();
 }
 
 void Renderer::StageImGui()
 {
+	// Finish up pipeline
 	if (_scene->fxaa)
 	{
 		FxaaBuffer fxaabuff = {};
@@ -93,6 +103,9 @@ void Renderer::StageImGui()
 	{
 		_mpso->Finish(_scene->gaussianShadowBlur, nullptr);
 	}
+
+	// Set rendering to back buffer for ImGui
+	// As it is rendered on top
 	_device->SetRenderTargetBackbuffer();
 }
 

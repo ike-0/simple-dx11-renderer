@@ -41,7 +41,7 @@ Microsoft::WRL::ComPtr<ID3DBlob> HLSLCompiler::LoadFromFile(const std::filesyste
 	HRESULT hr = NULL;
 
 	IncludeHandler handler(filepath.parent_path());
-	// This is fairly limiting 5.1 is only supported on D3D12
+
 	hr = D3DCompileFromFile(filepath.c_str(), NULL, &handler, "main", std::string(ext + "_5_0").c_str(), compileFlags, NULL, blob.ReleaseAndGetAddressOf(), errorblob.ReleaseAndGetAddressOf());
 	
 	if (!CheckResult(hr, blob, errorblob))
